@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        .numval {
+            -webkit-appearance: none;
+            background-color: #ebeff4;
+            /*border-radius: 15px;*/
+            width: 80% !important;
+            -webkit-appearance: none;
+            height: 4px;
+            padding: 0;
+            border: none;
+            display: inline-block;
+            outline: none;
+            margin: 8px 5px
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none; /*去除默认样式*/
+            cursor: default;
+            top: 0;
+            height: 20px;
+            width: 20px;
+            transform: translateY(0px);
+            background: none repeat scroll 0 0 #5891f5;
+            background: #fff;
+            border-radius: 15px;
+            border: 5px solid #006eb3;
+        }
+        .box {
+            width: 60%;
+            margin: 100px auto;
+            text-align: center;
+            border: none;
+            box-shadow: none
+        }
+        span{
+            font-size: 15px;
+            display: inline-block;
+            width: 50px
+        }
+        button{
+            width: 30%;
+            height: 36px;
+            border: none;
+            color: #fff
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>费率设置</h2>
+    <div class="num" style="font-size: 16px">{$cost}</div>
+    <div style="width: 80%;display: flex;margin:30px auto">
+        <span>最小</span>
+        <input
+                type="range"
+                max="0.006"
+                min="0.001"
+                step="0.001"
+                value="{$cost}"
+                class="numval"
+                onchange="change()"
+                oninput="change()"
+        />
+        <span>最大</span>
+    </div>
+    <button style="background-color:cornflowerblue;margin-right: 20px" class="false">取消</button>
+    <button style="background-color:dodgerblue" class="confirm">确定</button>
+    <input type="hidden" value="{$id}" id="hi">
+</div>
+<script>
+    function change() {
+        var a = $(".numval")
+            .val()
+            .trim();
+        $(".num").html(a);
+    }
+</script>
+</body>
+</html>

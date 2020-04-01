@@ -4,8 +4,7 @@ require_once("HttpUtils.php");
 
 define("LANGS", "php");
 define("VERSION", "3.1.1");
-//$_SERVER['HTTP_ACCEPT_LANGUAGE']='Google Chrome';
-define("USERAGENT", LANGS."/".VERSION."/".PHP_OS."/".$_SERVER ['SERVER_SOFTWARE']."/Zend Framework/".zend_version()."/".PHP_VERSION."/".$_SERVER['HTTP_ACCEPT_LANGUAGE']."/");
+define("USERAGENT", LANGS."/".VERSION."/".PHP_OS."/".$_SERVER ['SERVER_SOFTWARE']."/Zend Framework/".zend_version()."/".PHP_VERSION."//");
 
 abstract class HTTPRequest{
 
@@ -18,6 +17,7 @@ abstract class HTTPRequest{
      * @return type
      */
     static public function curl_request($url, $request){
+        //halt($request);
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_USERAGENT, USERAGENT);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
@@ -44,7 +44,6 @@ abstract class HTTPRequest{
         array_push($headerArray, "x-yop-sdk-langs:".LANGS);
         array_push($headerArray, "x-yop-sdk-version:".VERSION);
         array_push($headerArray, "x-yop-request-id:".$request->requestId);
-
         if($request->jsonParam!=null) {
             array_push($headerArray,'Content-Type: application/json; charset=utf-8',
                                     'Content-Length: ' . strlen($request->jsonParam));
@@ -92,7 +91,6 @@ abstract class HTTPRequest{
         }
 
         $data = curl_exec($curl);
-        //var_dump($data);
 
         if (curl_errno($curl)) {
             return curl_error($curl);

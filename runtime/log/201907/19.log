@@ -1,0 +1,208 @@
+---------------------------------------------------------------
+[ 2019-07-19T17:17:55+08:00 ] 192.168.1.113 GET 192.168.1.144:1161/
+[运行时间：4.233038s] [吞吐率：0.24req/s] [内存消耗：3,809.41kb] [文件加载：149]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000000s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run \addons\cms\Cms @app_init [ RunTime:0.101013s ]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.101013s ]
+[ info ] [ LANG ] D:\WWW\fastadmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\addons\\Route',
+    1 => 'execute',
+  ),
+  'var' => 
+  array (
+    'addon' => 'cms',
+    'controller' => 'index',
+    'action' => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '192.168.1.144:1161',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] think\addons\Route->execute[ D:\WWW\fastadmin\vendor\karsonzhang\fastadmin-addons\src\addons\Route.php ]
+[ info ] [ LANG ] D:\WWW\fastadmin\public/../application/common\lang\zh-cn\addon.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @addon_begin [ RunTime:0.041506s ]
+[ info ] [ LANG ] D:\WWW\fastadmin\addons\cms\lang\zh-cn.php
+[ info ] [ VIEW ] D:\WWW\fastadmin\addons\cms\view\default\index.html [ array (
+  0 => 'config',
+  1 => 'user',
+  2 => 'site',
+  3 => '__CHANNEL__',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run \addons\cms\Cms @response_send [ RunTime:0.005001s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.138518s ] mysql:host=pipiyaode.mysql.rds.aliyuncs.com;dbname=fa;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_cms_block` [ RunTime:0.068009s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_block` WHERE  `name` = 'bannerad'  AND `status` = 'normal' LIMIT 1 [ RunTime:0.017502s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_block` WHERE  `name` = 'sidebarad1'  AND `status` = 'normal' LIMIT 1 [ RunTime:0.013502s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_block` WHERE  `name` = 'sidebarad2'  AND `status` = 'normal' LIMIT 1 [ RunTime:0.016502s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_block` WHERE  `name` = 'partner'  AND `status` = 'normal' LIMIT 1 [ RunTime:0.036004s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_block` WHERE  `name` = 'friendlink'  AND `status` = 'normal' LIMIT 1 [ RunTime:0.019503s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_block` WHERE  `name` = 'footer'  AND `status` = 'normal' LIMIT 1 [ RunTime:0.016502s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_cms_channel` [ RunTime:0.019003s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_channel` WHERE  `status` = 'normal'  AND `parent_id` = 0  AND (  1=isnav ) ORDER BY `weigh` DESC LIMIT 10 [ RunTime:0.031504s ]
+[ sql ] [ SQL ] SELECT `parent_id` FROM `fa_cms_channel` WHERE  `parent_id` > 0  AND `status` = 'normal' [ RunTime:0.014502s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_channel` WHERE  `status` = 'normal'  AND ( `id`  IN (( SELECT `id` FROM `fa_cms_channel` WHERE  `parent_id` IN (22) )) )  AND (  1=isnav ) ORDER BY `weigh` DESC LIMIT 10 [ RunTime:0.023003s ]
+[ sql ] [ SQL ] SELECT `outlink`,`parent_id` FROM `fa_cms_channel` WHERE  `type` = 'link'  AND `status` = 'normal' [ RunTime:0.022003s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_channel` WHERE  `status` = 'normal'  AND ( `id`  IN (( SELECT `id` FROM `fa_cms_channel` WHERE  `parent_id` IN (1) )) )  AND (  1=isnav ) ORDER BY `weigh` DESC LIMIT 10 [ RunTime:0.047006s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_channel` WHERE  `status` = 'normal'  AND ( `id`  IN (( SELECT `id` FROM `fa_cms_channel` WHERE  `parent_id` IN (2) )) )  AND (  1=isnav ) ORDER BY `weigh` DESC LIMIT 10 [ RunTime:0.037505s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_channel` WHERE  `status` = 'normal'  AND ( `id`  IN (( SELECT `id` FROM `fa_cms_channel` WHERE  `parent_id` IN (11) )) )  AND (  1=isnav ) ORDER BY `weigh` DESC LIMIT 10 [ RunTime:0.015502s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_channel` WHERE  `status` = 'normal'  AND ( `id`  IN (( SELECT `id` FROM `fa_cms_channel` WHERE  `parent_id` IN (15) )) )  AND (  1=isnav ) ORDER BY `weigh` DESC LIMIT 10 [ RunTime:0.024504s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_channel` WHERE  `status` = 'normal'  AND ( `id`  IN (( SELECT `id` FROM `fa_cms_channel` WHERE  `parent_id` IN (16) )) )  AND (  1=isnav ) ORDER BY `weigh` DESC LIMIT 10 [ RunTime:0.038005s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_channel` WHERE  `status` = 'normal'  AND ( `id`  IN (( SELECT `id` FROM `fa_cms_channel` WHERE  `parent_id` IN (17) )) )  AND (  1=isnav ) ORDER BY `weigh` DESC LIMIT 10 [ RunTime:0.025003s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_block` WHERE  `status` = 'normal'  AND `name` = 'indexfocus' ORDER BY `id` DESC LIMIT 5 [ RunTime:0.030003s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_cms_archives` [ RunTime:0.030504s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_archives` WHERE  `status` = 'normal'  AND ( `deletetime` IS NULL )  AND `model_id` IN (2) ORDER BY `views` DESC LIMIT 4 [ RunTime:0.067508s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`image`,`diyname`,`items` FROM `fa_cms_channel` WHERE  `id` IN (9,8) [ RunTime:0.020502s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_channel` WHERE  `status` = 'normal'  AND (  'list'=type ) ORDER BY `weigh` DESC LIMIT 6 [ RunTime:0.015502s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_archives` WHERE  `status` = 'normal'  AND ( `deletetime` IS NULL ) ORDER BY `weigh` DESC,`id` DESC LIMIT 0,10 [ RunTime:0.021503s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`image`,`diyname`,`items` FROM `fa_cms_channel` WHERE  `id` IN (8,10,9,14) [ RunTime:0.023003s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_archives` WHERE  `status` = 'normal'  AND ( `deletetime` IS NULL ) ORDER BY `id` DESC LIMIT 8 [ RunTime:0.020003s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`image`,`diyname`,`items` FROM `fa_cms_channel` WHERE  `id` IN (8,10,9,14) [ RunTime:0.023003s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_archives` WHERE  `status` = 'normal'  AND ( `deletetime` IS NULL )  AND `model_id` IN (1)  AND (  (FIND_IN_SET('recommend', flag)) ) ORDER BY `id` ASC LIMIT 10 [ RunTime:0.031504s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`image`,`diyname`,`items` FROM `fa_cms_channel` WHERE  `id` IN (6,5,4,3) [ RunTime:0.031004s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_cms_tags` [ RunTime:0.048506s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_tags` ORDER BY rand() LIMIT 30 [ RunTime:0.029504s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_archives` WHERE  `status` = 'normal'  AND ( `deletetime` IS NULL )  AND `model_id` IN (3)  AND (  (FIND_IN_SET('recommend', flag)) ) ORDER BY `id` ASC LIMIT 10 [ RunTime:0.025003s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`image`,`diyname`,`items` FROM `fa_cms_channel` WHERE  `id` IN (12,13) [ RunTime:0.026504s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_cms_model` [ RunTime:0.037005s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cms_model` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.040005s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_cms_addondownload` [ RunTime:0.071009s ]
+[ sql ] [ SQL ] SELECT `id`,`downloads` FROM `fa_cms_addondownload` WHERE  `id` IN (44,47,49,50,51,52,54,57,60,62) [ RunTime:0.143518s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_cms_fields` [ RunTime:0.054507s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`type`,`content` FROM `fa_cms_fields` WHERE  `model_id` = 3  AND `status` = 'normal' [ RunTime:0.118516s ]
+---------------------------------------------------------------
+[ 2019-07-19T17:17:57+08:00 ] 192.168.1.113 GET 192.168.1.144:1161/favicon.ico
+[运行时间：0.092512s] [吞吐率：10.81req/s] [内存消耗：1,903.90kb] [文件加载：114]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000000s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run \addons\cms\Cms @app_init [ RunTime:0.003500s ]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003500s ]
+[ info ] [ LANG ] D:\WWW\fastadmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://192.168.1.144:1161/',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'connection' => 'close',
+  'host' => '192.168.1.144:1161',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ BEHAVIOR ] Run \addons\cms\Cms @response_send [ RunTime:0.000000s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-07-19T17:18:02+08:00 ] 192.168.1.113 GET 192.168.1.144:1161/index/user/login.html
+[运行时间：0.199025s] [吞吐率：5.02req/s] [内存消耗：2,636.02kb] [文件加载：128]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000000s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run \addons\cms\Cms @app_init [ RunTime:0.002500s ]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002500s ]
+[ info ] [ LANG ] D:\WWW\fastadmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://192.168.1.144:1161/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '192.168.1.144:1161',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\WWW\fastadmin\public/../application/index\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002000s ]
+[ info ] [ BEHAVIOR ] Run \addons\geetest\Geetest @config_init [ RunTime:0.012502s ]
+[ info ] [ LANG ] D:\WWW\fastadmin\public/../application/index/lang/zh-cn/user.php
+[ info ] [ BEHAVIOR ] Run \addons\geetest\Geetest @action_begin [ RunTime:0.000000s ]
+[ info ] [ RUN ] app\index\controller\User->login[ D:\WWW\fastadmin\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\WWW\fastadmin\public/../application/index\view\user\login.html [ array (
+  0 => 'user',
+  1 => 'site',
+  2 => 'config',
+  3 => 'url',
+  4 => 'title',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run \addons\cms\Cms @response_send [ RunTime:0.000000s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-07-19T17:18:03+08:00 ] 192.168.1.113 GET 192.168.1.144:1161/index/ajax/lang?callback=define&controllername=user&v=1563527882
+[运行时间：0.083010s] [吞吐率：12.05req/s] [内存消耗：2,448.31kb] [文件加载：127]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000000s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run \addons\cms\Cms @app_init [ RunTime:0.002000s ]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002000s ]
+[ info ] [ LANG ] D:\WWW\fastadmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=9d5l8delqloq3tinhhajm97sp2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://192.168.1.144:1161/index/user/login.html',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'connection' => 'close',
+  'host' => '192.168.1.144:1161',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'user',
+  'v' => '1563527882',
+)
+[ info ] [ LANG ] D:\WWW\fastadmin\public/../application/index\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002001s ]
+[ info ] [ BEHAVIOR ] Run \addons\geetest\Geetest @config_init [ RunTime:0.000000s ]
+[ info ] [ LANG ] D:\WWW\fastadmin\public/../application/index/lang/zh-cn/ajax.php
+[ info ] [ BEHAVIOR ] Run \addons\geetest\Geetest @action_begin [ RunTime:0.000000s ]
+[ info ] [ RUN ] app\index\controller\Ajax->lang[ D:\WWW\fastadmin\application\index\controller\Ajax.php ]
+[ info ] [ LANG ] D:\WWW\fastadmin\public/../application/index/lang/zh-cn/user.php
+[ info ] [ BEHAVIOR ] Run \addons\cms\Cms @response_send [ RunTime:0.000500s ]
+[ info ] [ LOG ] INIT File

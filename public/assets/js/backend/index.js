@@ -1,4 +1,11 @@
-define(['jquery', 'bootstrap', 'backend', 'addtabs', 'adminlte', 'form'], function ($, undefined, Backend, undefined, AdminLTE, Form) {
+define(['jquery', 'bootstrap', 'backend', 'addtabs', 'adminlte', 'form','frontend'], function ($, undefined, Backend, undefined, AdminLTE, Form) {
+    var validatoroptions = {
+        invalid: function (form, errors) {
+            $.each(errors, function (i, j) {
+                Layer.msg(j);
+            });
+        }
+    };
     var Controller = {
         index: function () {
             //双击重新加载页面
@@ -460,7 +467,237 @@ define(['jquery', 'bootstrap', 'backend', 'addtabs', 'adminlte', 'form'], functi
                 }));
                 location.href = Backend.api.fixurl(data.url);
             });
-        }
+
+            Form.api.bindevent($("#resetpwd-form"), function (data) {
+                Layer.closeAll();
+            });
+
+            $(document).on("click", ".btn-forgot", function () {
+                var id = "resetpwdtpl";
+                var content = Template(id, {});
+                Layer.open({
+                    type: 1,
+                    title: '重置密码',
+                    area: ["450px", "355px"],
+                    content: content,
+                    success: function (layero) {
+                        Form.api.bindevent($("#resetpwd-form", layero), function (data) {
+                            Layer.closeAll();
+                        });
+                    }
+                });
+            });
+
+        },
+        register:function () {
+            $("#register-form").data("validator-options", validatoroptions);
+            //为表单绑定事件
+            Form.api.bindevent($("#register-form"), function (data) {
+                setTimeout(function () {
+                    location.href = 'login';
+                }, 1000);
+            });
+            //发送验证码
+            var onOff=true;
+            $('.captcha').click(function() {
+                var time = 60;
+                if(!onOff) return;
+                onOff=false;
+                $.post('/api/sms/send',{mobile:$("#mobile").val()},function (data) {
+                    layer.alert(data.msg);
+                });
+                settime($(this));
+                function settime(obj){
+                    if (time==0) {
+                        $(obj).attr('disabled', false);
+                        $(obj).html("点击获取验证码");
+                        time = 60;
+                        return;
+                    } else{
+                        $(obj).attr('disabled', true);
+                        $(obj).html(time+"秒后重新发送");
+                        time--;
+
+                    }
+                    setTimeout(function() {
+                        settime(obj)
+                    },1000)
+                }
+            });
+            //验证两次输入的密码
+            $("#password2").change(function () {
+                var confirmPass=$(this).val();
+                var pass=$("#password").val();
+
+            })
+        },
+
+        info:function () {
+            $("#form").data("validator-options", validatoroptions);
+            //为表单绑定事件
+            Form.api.bindevent($("#form"), function (data) {
+                setTimeout(function () {
+                    location.href = 'type';
+                }, 1500);
+            },function(data,ret){
+                setTimeout(function () {
+                    location.href = 'type';
+                }, 1500);
+            });
+            this.selSon($("select[name=merLevel1No]"),$("select[name=merLevel2No]"),'level');
+            this.selSon($("select[name=merProvince]"),$("select[name=merCity]"),'city');
+            this.selSon($("select[name='bankProvince']"),$("select[name='bankCity']"),'bankcity');
+            this.getBank(Config.bankcity);
+
+            //查询开户支行
+            $("#checkBankCode").click(function () {
+                Controller.getBank();
+            })
+            //商户分类
+            $("select[name=merLevel1No]").change(function () {
+                var id=$(this).find('option:selected').attr('data-id');
+                Controller.getLevelNo(id);
+            })
+            //商户跳补充银行信息
+            $("#next").click(function () {
+                $(".mod-sub-list1").removeClass('list-active');
+                $(".mod-sub-list2").addClass('list-active2');
+                $(".bankCard").css('display','block');
+                $(".busInfo").css('display','none');
+                $(".info_title h2").html('2.填写银行卡信息');
+            })
+            //银行卡跳回商户
+            $("#prev").click(function () {
+                $(".mod-sub-list2").removeClass('list-active2');
+                $(".mod-sub-list1").addClass('list-active');
+                $(".bankCard").css('display','none');
+                $(".busInfo").css('display','block');
+                $(".info_title h2").html('1.填写商户信息');
+            })
+            //银行卡信息跳上传证件
+            $("#next2").click(function () {
+                $(".mod-sub-list2").removeClass('list-active2');
+                $(".mod-sub-list3").addClass('list-active2');
+                $(".bankCard").css('display','none');
+                $(".cardInfo").css('display','block');
+                $(".info_title h2").html('3.上传证件信息');
+            })
+            $("#prev2").click(function () {
+                $(".mod-sub-list3").removeClass('list-active2');
+                $(".mod-sub-list2").addClass('list-active2');
+                $(".cardInfo").css('display','none');
+                $(".bankCard").css('display','block');
+                $(".info_title h2").html('2.填写银行卡信息');
+            })
+            //地址切换
+            $("select[name=merProvince]").change(function () {
+                var data_id=$(this).find('option:selected').attr('data-id');
+                Controller.getCity(data_id);
+            })
+            $("select[name=merCity]").change(function () {
+                var data_id=$(this).find('option:selected').attr('data-id');
+                Controller.getCode(data_id);
+            })
+            $("select[name=bankProvince]").change(function () {
+                var data_id=$(this).find('option:selected').attr('data-id');
+                Controller.getBankCity(data_id);
+            })
+        },
+
+        getCity:function (id) {
+            $.post('/api/register/address',{id:id},function (data) {
+                $("select[name='merCity']").empty();
+                $.each(data.data,function (index,obj) {
+                    if(obj.code == Config.mercity){
+                        var html="<option selected data-id='"+obj.id+"' value='"+obj.code+"'>"+obj.name+"</option>";
+                    }else{
+                        var html="<option  data-id='"+obj.id+"' value='"+obj.code+"'>"+obj.name+"</option>";
+                    }
+                    $("select[name='merCity']").append(html);
+                    $("#code option:first").remove();
+                })
+                if(typeof ($("#city").find('option:selected').attr('data-id')!='undefined')){
+                    Controller.getCode($("#city").find('option:selected').attr('data-id'));
+                }
+            });
+        },
+        getCode:function (id) {
+            $("select[name='merDistrict']").empty();
+            $.post('/api/register/address',{id:id},function (data) {
+                $.each(data.data,function (index,obj) {
+                    if(obj.code == Config.merdistrict){
+                        var html="<option selected value='"+obj.code+"'>"+obj.name+"</option>";
+                    }else{
+                        var html="<option   value='"+obj.code+"'>"+obj.name+"</option>";
+                    }
+                    $("select[name='merDistrict']").append(html);
+                })
+            });
+        },
+        getLevelNo:function (id) {
+            $.post('/api/register/store',{id:id},function (data) {
+                $("select[name='merLevel2No']").empty();
+                $.each(data.data,function (index,obj) {
+                    if(obj.code == Config.level2){
+                        var html="<option selected value='"+obj.code+"'>"+obj.name+"</option>";
+                    }else{
+                        var html="<option value='"+obj.code+"'>"+obj.name+"</option>";
+                    }
+                    $("select[name='merLevel2No']").append(html);
+                })
+            });
+        },
+        getBank:function (bankCity=null) {
+            var bankCode=$("select[name=headBankCode]").val();
+            var bankPro= $("select[name=bankProvince]").val();
+            if(bankCity == null){
+                bankCity=$("select[name=bankCity]").val();
+            }
+            if(bankCode!='' && bankPro!='' && bankCity!='' ){
+                $.post('/api/yeepay/bank_branch',{bank:bankCode,province:bankPro,city:bankCity},function (data) {
+                    if(data.code == 0){
+                        layer.msg(data.msg);
+                    }else{
+                        $("select[name='bankCode']").empty();
+                        $.each(data.data,function (index,obj) {
+                            if(index == Config.bankcode){
+                                var html="<option selected value='"+index+"'>"+obj+"</option>";
+                            }else{
+                                var html="<option  value='"+index+"'>"+obj+"</option>";
+                            }
+                            $("select[name='bankCode']").append(html);
+                        })
+                    }
+                });
+            }
+        },
+        getBankCity:function (id) {
+            $.post('/api/register/address',{id:id},function (data) {
+                $("select[name='bankCity']").empty();
+                $.each(data.data,function (index,obj) {
+                    if(obj.code == Config.bankcity){
+                        var html="<option selected data-id='"+obj.id+"' value='"+obj.code+"'>"+obj.name+"</option>";
+                    }else{
+                        var html="<option  data-id='"+obj.id+"' value='"+obj.code+"'>"+obj.name+"</option>";
+                    }
+                    $("select[name='bankCity']").append(html);
+                })
+            });
+        },
+        selSon:function(parentSel,sonSel,type){
+            if( parentSel.find('option:selected').text().trim()!="请选择"){
+                var data_id=parentSel.find('option:selected').attr('data-id');
+                if(type == 'level'){
+                    Controller.getLevelNo(data_id);
+                }else if(type == 'city'){
+                    Controller.getCity(data_id);
+                }else if(type == 'bankcity'){
+                    Controller.getBankCity(data_id);
+                }
+            }else{
+                sonSel.find('option:selected').text("请选择");
+            }
+        },
     };
 
     return Controller;

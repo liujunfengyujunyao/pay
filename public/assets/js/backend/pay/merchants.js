@@ -1,4 +1,4 @@
-define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefined, Backend, Table, Form) {
+define(['jquery','bootstrap', 'backend', 'table', 'form'], function ($, undefined, Backend, Table, Form) {
 
     var Controller = {
         index: function () {
@@ -110,7 +110,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'unique_order_id', title: __('Unique_order_id')},
                         {field: 'user_id', title: __('User_id')},
                         {field: 'leader_id', title: __('Leader_id')},
-                        {field: 'type', title: __('Type'), searchList: {"1":__('Type 1'),"2":__('Type 2')}, formatter: Table.api.formatter.normal},
+                        // {field: 'type', title: __('Type'), searchList: {"1":__('Type 1'),"2":__('Type 2')}, formatter: Table.api.formatter.normal},
                         {field: 'order_amount', title: __('Order_amount'), operate:'BETWEEN'},
                         {field: 'goods_detail', title: __('Goods_detail')},
                         {field: 'goods_title', title: __('Goods_title')},

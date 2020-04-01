@@ -19,7 +19,7 @@ class Account extends Backend
      * @var \app\admin\model\pay\Account
      */
     protected $model = null;
-
+    protected $dataLimitField = 'user_id';
     public function _initialize()
     {
         parent::_initialize();
@@ -92,16 +92,38 @@ class Account extends Backend
                 $params = $this->preExcludeFields($params);//过滤
 //                $result = false;
                 Db::startTrans();
-//                $api = ;//调用接口
+//                $api = ;
                 $order = $this->model->where(['id'=>$params['ids']])->find();
+//                halt($order['unique_order_id']);
                 if($order['order_amount']<$params['refund_amount'] || $order['order_status'] !== 2){
                     $this->error("退款金额过大");
                 }
-                $result = $this->model->where(['id'=>$params['ids']])->update(['order_status'=>3,'update_time'=>time()]);
+                //调用接口
+                $url = "http://" . $_SERVER['HTTP_HOST']."/index.php/api/yeepay/refund";
+//                $url = "http://192.168.1.144:1161/api/yeepay/refund";
+                $data = [
+                    'id' => $order['unique_order_id'],
+                    'amount' => $params['refund_amount'],
+                ];
+//                halt($data);
+                $return = json_curl($url,$data);
+                $return = json_decode($return,true);
+//                halt($return);
+                if($return['code'] == 1){
+                    $result = $this->model->where(['id'=>$params['ids']])->update(['order_status'=>3,'update_time'=>time()]);
+                }else{
+                    $result = false;
+                }
+
+
+
+
+
+
                 if ($result !== false) {
                     $this->success('退款成功','admin/pay/account');
                 } else {
-                    $this->error(__('No rows were updated'));
+                    $this->error($return['msg']);
                 }
             }
             $this->error(__('Parameter %s can not be empty', ''));
@@ -110,16 +132,54 @@ class Account extends Backend
         return $this->view->fetch();
     }
 
+    //订单状态
+    public function order_status()
+    {
+        $params = request()->param('id');
+//halt($params);
+        $status = DB::name('wk_order')->where(['unique_order_id'=>$params])->value('order_status');
+        $result = ['status' => $status];
+        return json($result);
+
+    }
+
     //收款
     public function paymethod()
     {
 
         if($this->request->isAjax()){
+            $user_id = $_SESSION['think']['admin']['id'];
+            $user = DB::name('admin')->find($user_id);
+            $params = request()->param();
 
-            $params = request()->param('amount');
+            $data = [
+                'type' => $params['type'],//1支付宝 2微信
+//                'type' => 1,//1支付宝 2微信
+                'user_id' => $user['wk_id'],
+//                'user_id' => $user['wk_id'],
+                'amount' => floatval($params['amount']),
+//                'amount' => 1,
+                'goods_name' => '收款',
+                'sn' => $params['sn'],
+                'notify' => "http://" . $_SERVER['HTTP_HOST'] . "/api/notify/notify",
+//                'notify' => "http://8ce78153.ngrok.io/api/test/notify",
+                'goodsDesc' => $params['goodsDesc'],
+            ];
+//            halt($data);
+//            $url = "http://192.168.1.144:1161/api/yeepay/pay ";//存预订单入库
+            $url = "http://" . $_SERVER['HTTP_HOST'] . "/api/yeepay/pay";
+
+            $return = json_curl($url,$data);
+//halt($return);
+            $arr = json_decode($return,true)['data'];//返回结果
+
+            $result = [
+                'qrcode' => $this->qrcode($arr['url'])['data'],
+                'unique_order_id' => $arr['unique_order_id'],
+            ];
 
 
-            $result = $this->qrcode($params);
+//            $result = $this->qrcode($arr['url']);
 
             return json($result);
 
@@ -147,5 +207,6 @@ class Account extends Backend
         $data = action('api/pay/pay2',['type'=>1,'amount'=>0.01,'user_id'=>2,'goods_name'=>'goods','sn'=>1]);
         halt($data);
     }
-
+//www.ananova.com/news
+//www.sickarts.com
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="1f68d0fd-37f5-481c-a01d-7837e0bde1ef" name="京东云" url="http://114.67.89.3">
+        <fileTransfer host="114.67.89.3" port="22" rootFolder="/var/www/html/css/oscshop2" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html >
+<head>
+    {include file="common/meta" /}
+    <style>
+        .header_top h2{ font-size: 24px; color: #fff; float: left;line-height: 50px;}
+        .btn-primary:hover{border-color:transparent!important;}
+        .login-section {
+            margin: 200px auto;
+            overflow: hidden;
+            width: 1000px;
+        }
+        .login-section p{
+            text-align: center;
+            font-size: 20px;
+            color: #666;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 767px) {
+            .login-section {
+                width: 100%;
+            }
+            .header_top h2{
+                font-size: 14px;
+                margin-left: 20px;
+            }
+            .login-section {
+                margin: 100px auto;
+                width: 100%;
+            }
+            .header_top input[type=button]{
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background: #345492;">
+    <div class="container header_top">
+        <div class="row">
+            <h2 >欢迎登陆哇卡支付系统</h2>
+            <a href="{:url('index/logout')}">
+                <input type="button" value="退出登录" class="pull-right btn btn-primary btn-lg" style="margin-top: 22px; background: #169bd5;">
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="login-section">
+        <p>更多功能使用前请补全身份信息</p>
+        <div class="row">
+            <div class="col-xs-4 col-md-4">
+                <a href="{$per}" class="btn btn-primary btn-block" style="background: #169bd5;">个人入口</a>
+            </div>
+            <div class="col-xs-4 col-md-4">
+                <a href="{$gt}" class="btn btn-primary btn-block" style="background: #169bd5;">个体入口</a>
+            </div>
+            <div class="col-xs-4 col-md-4">
+                <a href="{$com}" class="btn btn-primary btn-block" style="background: #169bd5;">企业入口</a>
+            </div>
+        </div>
+        <input type="text" readonly value={$msg} class="form-control input-sm" style="margin-top: 30px;text-align: center;font-size: 14px;">
+    </div>
+</div>
+{include file="common/script" /}
+</body>
+</html>

@@ -16,6 +16,14 @@ return array (
     array (
       0 => 'cms',
     ),
+    'action_begin' => 
+    array (
+      0 => 'geetest',
+    ),
+    'config_init' => 
+    array (
+      0 => 'geetest',
+    ),
   ),
   'route' => 
   array (

@@ -53,17 +53,17 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
                     <!--如果你需要自定义NAV,可使用channellist标签来完成,这里只设置了2级,如果显示无限级,请使用cms:nav标签-->
-                    <?php $__H5icqzGJg4__ = \addons\cms\model\Channel::getChannelList(["id"=>"nav","type"=>"top","condition"=>"1=isnav"]); if(is_array($__H5icqzGJg4__) || $__H5icqzGJg4__ instanceof \think\Collection || $__H5icqzGJg4__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__H5icqzGJg4__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$nav): $mod = ($i % 2 );++$i;?>
+                    <?php $__oO2gEktszM__ = \addons\cms\model\Channel::getChannelList(["id"=>"nav","type"=>"top","condition"=>"1=isnav"]); if(is_array($__oO2gEktszM__) || $__oO2gEktszM__ instanceof \think\Collection || $__oO2gEktszM__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__oO2gEktszM__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$nav): $mod = ($i % 2 );++$i;?>
                     <!--判断是否有子级或高亮当前栏目-->
                     <li class="<?php if($nav['has_child']): ?>dropdown<?php endif; if($nav->is_active): ?> active<?php endif; ?>">
                         <a href="<?php echo $nav['url']; ?>" <?php if($nav['has_child']): ?> data-toggle="dropdown" <?php endif; ?>><?php echo $nav['name']; if($nav['has_child']): ?> <b class="caret"></b><?php endif; ?></a>
                         <ul class="dropdown-menu" role="menu">
-                            <?php $__laWVh9ocDB__ = \addons\cms\model\Channel::getChannelList(["id"=>"sub","type"=>"son","typeid"=>$nav['id'],"condition"=>"1=isnav"]); if(is_array($__laWVh9ocDB__) || $__laWVh9ocDB__ instanceof \think\Collection || $__laWVh9ocDB__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__laWVh9ocDB__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub): $mod = ($i % 2 );++$i;?>
+                            <?php $__jBrhp9gTMl__ = \addons\cms\model\Channel::getChannelList(["id"=>"sub","type"=>"son","typeid"=>$nav['id'],"condition"=>"1=isnav"]); if(is_array($__jBrhp9gTMl__) || $__jBrhp9gTMl__ instanceof \think\Collection || $__jBrhp9gTMl__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__jBrhp9gTMl__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub): $mod = ($i % 2 );++$i;?>
                             <li><a href="<?php echo $sub['url']; ?>"><?php echo $sub['name']; ?></a></li>
-                            <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__laWVh9ocDB__; ?>
+                            <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__jBrhp9gTMl__; ?>
                         </ul>
                     </li>
-                    <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__H5icqzGJg4__; ?>
+                    <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__oO2gEktszM__; ?>
                 </ul>
                 <ul class="nav navbar-right hidden">
                     <ul class="nav navbar-nav">
@@ -123,12 +123,12 @@
                 <!-- S 焦点图 -->
                 <div id="index-focus" class="carousel slide carousel-focus" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <?php $__bopPeKGTkh__ = \addons\cms\model\Block::getBlockList(["id"=>"block","name"=>"indexfocus","row"=>"5"]); if(is_array($__bopPeKGTkh__) || $__bopPeKGTkh__ instanceof \think\Collection || $__bopPeKGTkh__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__bopPeKGTkh__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$block): $mod = ($i % 2 );++$i;?>
+                        <?php $__ZPHkc1NzLp__ = \addons\cms\model\Block::getBlockList(["id"=>"block","name"=>"indexfocus","row"=>"5"]); if(is_array($__ZPHkc1NzLp__) || $__ZPHkc1NzLp__ instanceof \think\Collection || $__ZPHkc1NzLp__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__ZPHkc1NzLp__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$block): $mod = ($i % 2 );++$i;?>
                         <li data-target="#index-focus" data-slide-to="<?php echo $i-1; ?>" class="<?php if($i==1): ?>active<?php endif; ?>"></li>
-                        <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__bopPeKGTkh__; ?>
+                        <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__ZPHkc1NzLp__; ?>
                     </ol>
                     <div class="carousel-inner" role="listbox">
-                        <?php $__mxnUc6fT9H__ = \addons\cms\model\Block::getBlockList(["id"=>"block","name"=>"indexfocus","row"=>"5"]); if(is_array($__mxnUc6fT9H__) || $__mxnUc6fT9H__ instanceof \think\Collection || $__mxnUc6fT9H__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__mxnUc6fT9H__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$block): $mod = ($i % 2 );++$i;?>
+                        <?php $__HSqUCiXeQl__ = \addons\cms\model\Block::getBlockList(["id"=>"block","name"=>"indexfocus","row"=>"5"]); if(is_array($__HSqUCiXeQl__) || $__HSqUCiXeQl__ instanceof \think\Collection || $__HSqUCiXeQl__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__HSqUCiXeQl__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$block): $mod = ($i % 2 );++$i;?>
                         <div class="item <?php if($i==1): ?>active<?php endif; ?>">
                             <a href="<?php echo $block['url']; ?>">
                                 <div class="carousel-img" style="background-image:url('<?php echo cdnurl($block['image']); ?>');"></div>
@@ -137,7 +137,7 @@
                                 </div>
                             </a>
                         </div>
-                        <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__mxnUc6fT9H__; ?>
+                        <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__HSqUCiXeQl__; ?>
                     </div>
                     <a class="left carousel-control" href="#index-focus" role="button" data-slide="prev">
                         <span class="icon-prev fa fa-chevron-left" aria-hidden="true"></span>
@@ -165,7 +165,7 @@
                     <div class="related-article">
                         <div class="row">
                             <!-- S 热门图集 -->
-                            <?php $__yj84hwdYQx__ = \addons\cms\model\Archives::getArchivesList(["id"=>"item","model"=>2,"orderby"=>"views","row"=>"4"]); if(is_array($__yj84hwdYQx__) || $__yj84hwdYQx__ instanceof \think\Collection || $__yj84hwdYQx__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__yj84hwdYQx__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?>
+                            <?php $__9fG6eh4mjX__ = \addons\cms\model\Archives::getArchivesList(["id"=>"item","model"=>2,"orderby"=>"views","row"=>"4"]); if(is_array($__9fG6eh4mjX__) || $__9fG6eh4mjX__ instanceof \think\Collection || $__9fG6eh4mjX__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__9fG6eh4mjX__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?>
                             <div class="col-sm-3 col-xs-6">
                                 <a href="<?php echo $item['url']; ?>" class="img-zoom">
                                     <div class="embed-responsive embed-responsive-4by3">
@@ -174,7 +174,7 @@
                                 </a>
                                 <h5><?php echo $item['title']; ?></h5>
                             </div>
-                            <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__yj84hwdYQx__; ?>
+                            <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__9fG6eh4mjX__; ?>
                             <!-- E 热门图集 -->
                         </div>
                     </div>
@@ -189,9 +189,9 @@
                         <div class="more hidden-xs">
                             <ul class="list-unstyled list-inline">
                                 <!-- E 栏目筛选 -->
-                                <?php $__iMIgHhTGxw__ = \addons\cms\model\Channel::getChannelList(["id"=>"item","condition"=>"'list'=type","limit"=>"6"]); if(is_array($__iMIgHhTGxw__) || $__iMIgHhTGxw__ instanceof \think\Collection || $__iMIgHhTGxw__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__iMIgHhTGxw__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?>
+                                <?php $__JZueEHQnjY__ = \addons\cms\model\Channel::getChannelList(["id"=>"item","condition"=>"'list'=type","limit"=>"6"]); if(is_array($__JZueEHQnjY__) || $__JZueEHQnjY__ instanceof \think\Collection || $__JZueEHQnjY__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__JZueEHQnjY__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?>
                                 <li><?php echo $item['textlink']; ?></li>
-                                <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__iMIgHhTGxw__; ?>
+                                <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__JZueEHQnjY__; ?>
                                 <!-- E 栏目筛选 -->
                             </ul>
                         </div>
@@ -202,7 +202,7 @@
                         <?php $page=request()->get('page/d',1);$offset=($page-1)*10; ?>
 
 <!-- S 首页列表 -->
-<?php $__VCa4wZT0Kz__ = \addons\cms\model\Archives::getArchivesList(["id"=>"item","cache"=>"false","orderby"=>"weigh","limit"=>"$offset,10"]); if(is_array($__VCa4wZT0Kz__) || $__VCa4wZT0Kz__ instanceof \think\Collection || $__VCa4wZT0Kz__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__VCa4wZT0Kz__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?>
+<?php $__EszoKV1hZ5__ = \addons\cms\model\Archives::getArchivesList(["id"=>"item","cache"=>"false","orderby"=>"weigh","limit"=>"$offset,10"]); if(is_array($__EszoKV1hZ5__) || $__EszoKV1hZ5__ instanceof \think\Collection || $__EszoKV1hZ5__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__EszoKV1hZ5__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?>
 <article class="article-item">
     <div class="media">
         <?php if($item['hasimage']): ?>
@@ -232,7 +232,7 @@
     </div>
 
 </article>
-<?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__VCa4wZT0Kz__; ?>
+<?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__EszoKV1hZ5__; ?>
 <!-- E 首页列表 -->
 
 <?php if(!$__LASTLIST__): ?>
@@ -255,12 +255,12 @@
                 </div>
                 <div class="panel-body">
                     <ul class="list-unstyled">
-                        <?php $__VbD74MCENx__ = \addons\cms\model\Archives::getArchivesList(["id"=>"new","row"=>"8","orderby"=>"id","orderway"=>"desc"]); if(is_array($__VbD74MCENx__) || $__VbD74MCENx__ instanceof \think\Collection || $__VbD74MCENx__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__VbD74MCENx__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$new): $mod = ($i % 2 );++$i;?>
+                        <?php $__IHm0VAeiOX__ = \addons\cms\model\Archives::getArchivesList(["id"=>"new","row"=>"8","orderby"=>"id","orderway"=>"desc"]); if(is_array($__IHm0VAeiOX__) || $__IHm0VAeiOX__ instanceof \think\Collection || $__IHm0VAeiOX__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__IHm0VAeiOX__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$new): $mod = ($i % 2 );++$i;?>
                         <li>
                             <span>[<a href="<?php echo $new['channel']['url']; ?>"><?php echo $new['channel']['name']; ?></a>]</span>
                             <a class="link-dark" href="<?php echo $new['url']; ?>" title="<?php echo $new['title']; ?>"><?php echo $new['title']; ?></a>
                         </li>
-                        <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__VbD74MCENx__; ?>
+                        <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__IHm0VAeiOX__; ?>
                     </ul>
                 </div>
                 <!-- E 最近更新 -->
@@ -283,7 +283,7 @@
         <h3 class="panel-title"><?php echo __('Recommend news'); ?></h3>
     </div>
     <div class="panel-body">
-        <?php $__k2gSxovP9M__ = \addons\cms\model\Archives::getArchivesList(["id"=>"item","model"=>1,"row"=>"10","flag"=>"recommend","orderby"=>"id","orderway"=>"asc"]); if(is_array($__k2gSxovP9M__) || $__k2gSxovP9M__ instanceof \think\Collection || $__k2gSxovP9M__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__k2gSxovP9M__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?>
+        <?php $__JnQ5b0TjCg__ = \addons\cms\model\Archives::getArchivesList(["id"=>"item","model"=>1,"row"=>"10","flag"=>"recommend","orderby"=>"id","orderway"=>"asc"]); if(is_array($__JnQ5b0TjCg__) || $__JnQ5b0TjCg__ instanceof \think\Collection || $__JnQ5b0TjCg__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__JnQ5b0TjCg__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?>
         <div class="media media-number">
             <div class="media-left">
                 <span class="num"><?php echo $i; ?></span>
@@ -292,7 +292,7 @@
                 <a class="link-dark" href="<?php echo $item['url']; ?>" title="<?php echo $item['title']; ?>"><?php echo $item['title']; ?></a>
             </div>
         </div>
-        <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__k2gSxovP9M__; ?>
+        <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__JnQ5b0TjCg__; ?>
     </div>
 </div>
 <!-- E 热门资讯 -->
@@ -310,9 +310,9 @@
     </div>
     <div class="panel-body">
         <div class="tags">
-            <?php $__54OMWThtIE__ = \addons\cms\model\Tags::getTagsList(["id"=>"tag","orderby"=>"rand","limit"=>"30"]); if(is_array($__54OMWThtIE__) || $__54OMWThtIE__ instanceof \think\Collection || $__54OMWThtIE__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__54OMWThtIE__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$tag): $mod = ($i % 2 );++$i;?>
+            <?php $__KexVL3vwcY__ = \addons\cms\model\Tags::getTagsList(["id"=>"tag","orderby"=>"rand","limit"=>"30"]); if(is_array($__KexVL3vwcY__) || $__KexVL3vwcY__ instanceof \think\Collection || $__KexVL3vwcY__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__KexVL3vwcY__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$tag): $mod = ($i % 2 );++$i;?>
             <a href="<?php echo $tag['url']; ?>" class="tag"> <span><?php echo $tag['name']; ?></span></a>
-            <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__54OMWThtIE__; ?>
+            <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__KexVL3vwcY__; ?>
         </div>
     </div>
 </div>
@@ -324,7 +324,7 @@
         <h3 class="panel-title"><?php echo __('Recommend download'); ?></h3>
     </div>
     <div class="panel-body">
-        <?php $__hLCTZOwSja__ = \addons\cms\model\Archives::getArchivesList(["id"=>"item","model"=>3,"row"=>"10","flag"=>"recommend","orderby"=>"id","orderway"=>"asc","addon"=>"downloads"]); if(is_array($__hLCTZOwSja__) || $__hLCTZOwSja__ instanceof \think\Collection || $__hLCTZOwSja__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__hLCTZOwSja__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?>
+        <?php $__jQPw6pU1kS__ = \addons\cms\model\Archives::getArchivesList(["id"=>"item","model"=>3,"row"=>"10","flag"=>"recommend","orderby"=>"id","orderway"=>"asc","addon"=>"downloads"]); if(is_array($__jQPw6pU1kS__) || $__jQPw6pU1kS__ instanceof \think\Collection || $__jQPw6pU1kS__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__jQPw6pU1kS__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?>
         <div class="media media-number">
             <div class="media-left">
                 <span class="num"><?php echo $i; ?></span>
@@ -333,7 +333,7 @@
                 <a href="<?php echo $item['url']; ?>" title="<?php echo $item['title']; ?>"><?php echo $item['title']; ?></a>
             </div>
         </div>
-        <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__hLCTZOwSja__; ?>
+        <?php endforeach; endif; else: echo "" ;endif; $__LASTLIST__=$__jQPw6pU1kS__; ?>
     </div>
 </div>
 <!-- E 推荐下载 -->

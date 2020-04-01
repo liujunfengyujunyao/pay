@@ -68,8 +68,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             var str = url.substring(index + 1,url.length);
             var check_id = str.split('?')[0];
             var cost = $('#cost').val();
-            $("#test1").on("click",function(){
 
+            $("#test1").on("click",function(){
+                cost = $('#cost').val();
                 Fast.api.ajax({
                     url:'check/wait/detail',
                     data:{status:1,check_id:check_id,cost:cost}
@@ -85,6 +86,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 });
             });
             $("#test2").on("click",function(){
+                cost = $('#cost').val();
                 Fast.api.ajax({
                     url:'check/wait/detail',
                     data:{status:3,check_id:check_id,cost:cost,update:1}
@@ -100,6 +102,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 });
             });
             $("#test3").on("click",function(){
+                cost = $('#cost').val();
                 Fast.api.ajax({
                     url:'check/wait/detail',
                     data:{status:3,check_id:check_id,cost:cost,del:1}

@@ -75,7 +75,6 @@ class YopRequest {
     public function __construct($appKey='', $secretKey=null, $yopPublicKey=null, $serverRoot=null) { //定义构造函数
         $this->config = new YopConfig();
         $this->requestId = YopRequest::uuid();
-
         if(!empty($appKey)){
             $this->appKey = $appKey;
         }
@@ -100,14 +99,14 @@ class YopRequest {
             $this->serverRoot = $serverRoot;
         }
         else{
-            $this->serverRoot = $this->config->yosServerRoot;
+            $this->serverRoot = $this->config->serverRoot;
         }
-//        if(!empty($serverRoot)){
-//             $this->serverRoot = $yosServerRoot;
-//        }
-//        else{
-//            $this->serverRoot = $this->config->yosServerRoot;
-//        }
+        // if(!empty($serverRoot)){
+        //      $this->serverRoot = $yosServerRoot;
+        // }
+        // else{
+        //     $this->serverRoot = $this->config->yosServerRoot;
+        // }
     }
 
     public function addParam($key,$values){

@@ -1,9 +1,7 @@
 <?php
-
+error_reporting(E_ERROR | E_PARSE );
 // 公共助手函数
-
 if (!function_exists('__')) {
-
     /**
      * 获取语言变量值
      * @param string $name 语言变量名
@@ -24,9 +22,7 @@ if (!function_exists('__')) {
         return \think\Lang::get($name, $vars, $lang);
     }
 }
-
 if (!function_exists('format_bytes')) {
-
     /**
      * 将字节转换为可读文本
      * @param int    $size      大小
@@ -42,9 +38,7 @@ if (!function_exists('format_bytes')) {
         return round($size, 2) . $delimiter . $units[$i];
     }
 }
-
 if (!function_exists('datetime')) {
-
     /**
      * 将时间戳转换为日期时间
      * @param int    $time   时间戳
@@ -57,9 +51,7 @@ if (!function_exists('datetime')) {
         return date($format, $time);
     }
 }
-
 if (!function_exists('human_date')) {
-
     /**
      * 获取语义化时间
      * @param int $time  时间
@@ -71,9 +63,7 @@ if (!function_exists('human_date')) {
         return \fast\Date::human($time, $local);
     }
 }
-
 if (!function_exists('cdnurl')) {
-
     /**
      * 获取上传资源的CDN的地址
      * @param string  $url    资源相对地址
@@ -91,10 +81,7 @@ if (!function_exists('cdnurl')) {
         return $url;
     }
 }
-
-
 if (!function_exists('is_really_writable')) {
-
     /**
      * 判断文件或文件夹是否可写
      * @param    string $file 文件或目录
@@ -121,9 +108,7 @@ if (!function_exists('is_really_writable')) {
         return true;
     }
 }
-
 if (!function_exists('rmdirs')) {
-
     /**
      * 删除文件夹
      * @param string $dirname  目录
@@ -139,7 +124,6 @@ if (!function_exists('rmdirs')) {
             new RecursiveDirectoryIterator($dirname, RecursiveDirectoryIterator::SKIP_DOTS),
             RecursiveIteratorIterator::CHILD_FIRST
         );
-
         foreach ($files as $fileinfo) {
             $todo = ($fileinfo->isDir() ? 'rmdir' : 'unlink');
             $todo($fileinfo->getRealPath());
@@ -150,9 +134,7 @@ if (!function_exists('rmdirs')) {
         return true;
     }
 }
-
 if (!function_exists('copydirs')) {
-
     /**
      * 复制文件夹
      * @param string $source 源文件夹
@@ -180,16 +162,13 @@ if (!function_exists('copydirs')) {
         }
     }
 }
-
 if (!function_exists('mb_ucfirst')) {
     function mb_ucfirst($string)
     {
         return mb_strtoupper(mb_substr($string, 0, 1)) . mb_strtolower(mb_substr($string, 1));
     }
 }
-
 if (!function_exists('addtion')) {
-
     /**
      * 附加关联字段数据
      * @param array $items  数据列表
@@ -246,12 +225,10 @@ if (!function_exists('addtion')) {
             $primary = $v['primary'] ? $v['primary'] : $model->getPk();
             $result[$v['field']] = $model->where($primary, 'in', $ids[$v['field']])->column("{$primary},{$v['column']}");
         }
-
         foreach ($items as $k => &$v) {
             foreach ($fields as $m => $n) {
                 if (isset($v[$n])) {
                     $curr = array_flip(explode(',', $v[$n]));
-
                     $v[$fieldsArr[$n]['display']] = implode(',', array_intersect_key($result[$n], $curr));
                 }
             }
@@ -259,9 +236,7 @@ if (!function_exists('addtion')) {
         return $items;
     }
 }
-
 if (!function_exists('var_export_short')) {
-
     /**
      * 返回打印数组结构
      * @param string $var    数组
@@ -289,7 +264,6 @@ if (!function_exists('var_export_short')) {
         }
     }
 }
-
 if (!function_exists('letter_avatar')) {
     /**
      * 首字母头像
@@ -301,7 +275,6 @@ if (!function_exists('letter_avatar')) {
         $total = unpack('L', hash('adler32', $text, true))[1];
         $hue = $total % 360;
         list($r, $g, $b) = hsv2rgb($hue / 360, 0.3, 0.9);
-
         $bg = "rgb({$r},{$g},{$b})";
         $color = "#ffffff";
         $first = mb_strtoupper(mb_substr($text, 0, 1));
@@ -310,18 +283,15 @@ if (!function_exists('letter_avatar')) {
         return $value;
     }
 }
-
 if (!function_exists('hsv2rgb')) {
     function hsv2rgb($h, $s, $v)
     {
         $r = $g = $b = 0;
-
         $i = floor($h * 6);
         $f = $h * 6 - $i;
         $p = $v * (1 - $s);
         $q = $v * (1 - $f * $s);
         $t = $v * (1 - (1 - $f) * $s);
-
         switch ($i % 6) {
             case 0:
                 $r = $v;
@@ -354,7 +324,6 @@ if (!function_exists('hsv2rgb')) {
                 $b = $q;
                 break;
         }
-
         return [
             floor($r * 255),
             floor($g * 255),
@@ -363,7 +332,6 @@ if (!function_exists('hsv2rgb')) {
     }
 }
 if (!function_exists('post_curls')) {
-
     function post_curls($url, $post)
     {
         $post = json_encode($post,320);
@@ -385,113 +353,102 @@ if (!function_exists('post_curls')) {
         }
         curl_close($curl); // 关闭CURL会话
         return $res; // 返回数据，json格式
-
     }
 }
 if (!function_exists('json_curl')) {
-function json_curl($url, $para ){
-
-    $data_string=json_encode($para,JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);//$data JSON类型字符串
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);//SSL证书认证
-    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);//严格认证
-    curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Content-Length: ' . strlen($data_string)));
-    $result = curl_exec($curl);
-    curl_close($curl);
-    return $result;
+    function json_curl($url, $para ){
+        $data_string=json_encode($para,JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);//$data JSON类型字符串
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);//SSL证书认证
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);//严格认证
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Content-Length: ' . strlen($data_string)));
+        $result = curl_exec($curl);
+        curl_close($curl);
+        return $result;
     }
 }
 
-if (!function_exists('json_curl')) {
-    function decrypt($source, $private_Key, $public_Key)
-    {
 
-        $private_key = "-----BEGIN RSA PRIVATE KEY-----\n" .
-            wordwrap($private_Key, 64, "\n", true) .
-            "\n-----END RSA PRIVATE KEY-----";
-
-        extension_loaded('openssl') or die('php需要openssl扩展支持');
-
-
-        /* 提取私钥 */
-        $privateKey = openssl_get_privatekey($private_key);
-
-        ($privateKey) or die('密钥不可用');
-
-
-        //分解参数
-        $args = explode('$', $source);
-
-
-        if (count($args) != 4) {
-            return 'source invalid : ';
-        }
-
-        $encryptedRandomKeyToBase64 = $args[0];
-        $encryptedDataToBase64 = $args[1];
-        $symmetricEncryptAlg = $args[2];
-        $digestAlg = $args[3];
-
-        //用私钥对随机密钥进行解密
-        openssl_private_decrypt(base64_decode(strtr($encryptedRandomKeyToBase64, '-_', '+/')), $randomKey, $privateKey);
-
-
-        openssl_free_key($privateKey);
-
-
-        $encryptedData = openssl_decrypt(base64_decode(strtr($encryptedDataToBase64, '-_', '+/')), "AES-128-ECB", $randomKey, OPENSSL_RAW_DATA);
-
-
-        //分解参数
-        $signToBase64 = substr(strrchr($encryptedData, '$'), 1);
-        $sourceData = substr($encryptedData, 0, strlen($encryptedData) - strlen($signToBase64) - 1);
-
-        $public_key = "-----BEGIN PUBLIC KEY-----\n" .
-            wordwrap($public_Key, 64, "\n", true) .
-            "\n-----END PUBLIC KEY-----";
-
-
-        $publicKey = openssl_pkey_get_public($public_key);
-
-        $res = openssl_verify($sourceData, base64_decode(strtr($signToBase64, '-_', '+/')), $publicKey, $digestAlg); //验证
-
-        openssl_free_key($publicKey);
-
-        //输出验证结果，1：验证成功，0：验证失败
-        if ($res == 1) {
-            return $sourceData;
-        } else {
-            return "verifySign fail!";
-        }
-    }
+function getTime(){
+    $date = date('Y-m-d H:i:s',time());
+    return $date;
 }
-if (!function_exists('json_curl')) {
-    function QRcode($url)
-    {
-        vendor('phpqrcode.phpqrcode');
-        $object = new \QRcode();
-        ob_end_clean();
-        $object->png($url, false, 3, 10, 2);
-        exit();
-
-    }
+function getOrderId()
+{
+    date_default_timezone_set('Asia/Shanghai');
+    $orderId = "DS" . date("ymd_His") . rand(10, 99);
+    return $orderId;
 }
+function toString($arraydata){
+    $Str="";
+    foreach ($arraydata as $k=>$v){
+        $Str .= strlen($Str) == 0 ? "" : "&";
+        $Str.=$k."=".$v;
+    }
+    return $Str;
+}
+function decrypt($source,$private_Key, $public_Key)
+{
 
-if (!function_exists('json_curl')) {
-    function create_qrcode($url)
-    {
-        vendor("phpqrcode.phpqrcode");
-        $data = $url;
-        $outfile = ROOT_PATH . "public/qrcode/" . time() . '.jpg';
-        $level = 'L';
-        $size = 4;
-        $QRcode = new \QRcode();
-        ob_start();
-        $QRcode->png($data, $outfile, $level, $size, 2);
-        ob_end_clean();
-        return time();
+    $private_key = "-----BEGIN RSA PRIVATE KEY-----\n" .
+        wordwrap($private_Key, 64, "\n", true) .
+        "\n-----END RSA PRIVATE KEY-----";
+
+    extension_loaded('openssl') or die('php需要openssl扩展支持');
+
+
+    /* 提取私钥 */
+    $privateKey = openssl_get_privatekey($private_key);
+
+    ($privateKey) or die('密钥不可用');
+
+
+    //分解参数
+    $args = explode('$', $source);
+
+
+    if (count($args) != 4) {
+        return 'source invalid : ';
+    }
+
+    $encryptedRandomKeyToBase64 = $args[0];
+    $encryptedDataToBase64 = $args[1];
+    $symmetricEncryptAlg = $args[2];
+    $digestAlg = $args[3];
+
+    //用私钥对随机密钥进行解密
+    openssl_private_decrypt(base64_decode(strtr($encryptedRandomKeyToBase64, '-_', '+/')), $randomKey, $privateKey);
+
+
+    openssl_free_key($privateKey);
+
+
+    $encryptedData = openssl_decrypt(base64_decode(strtr($encryptedDataToBase64, '-_', '+/')), "AES-128-ECB", $randomKey, OPENSSL_RAW_DATA);
+
+
+    //分解参数
+    $signToBase64=substr(strrchr($encryptedData,'$'),1);
+    $sourceData = substr($encryptedData,0,strlen($encryptedData)-strlen($signToBase64)-1);
+
+    $public_key = "-----BEGIN PUBLIC KEY-----\n" .
+        wordwrap($public_Key, 64, "\n", true) .
+        "\n-----END PUBLIC KEY-----";
+
+
+
+    $publicKey = openssl_pkey_get_public($public_key);
+
+    $res = openssl_verify($sourceData,base64_decode(strtr($signToBase64, '-_', '+/')), $publicKey,$digestAlg); //验证
+
+    openssl_free_key($publicKey);
+
+    //输出验证结果，1：验证成功，0：验证失败
+    if ($res == 1) {
+        return $sourceData;
+    } else {
+        return "verifySign fail!";
     }
 }

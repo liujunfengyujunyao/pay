@@ -1,0 +1,74 @@
+---------------------------------------------------------------
+[ 2019-06-18T14:10:34+08:00 ] 192.168.1.144 POST 192.168.1.144:1161/api/yeepay/pay
+[运行时间：2.471314s] [吞吐率：0.40req/s] [内存消耗：2,614.07kb] [文件加载：138]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000000s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run \addons\cms\Cms @app_init [ RunTime:0.119515s ]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.119515s ]
+[ info ] [ LANG ] D:\WWW\fastadmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'yeepay',
+    2 => 'pay',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'content-length' => '108',
+  'content-type' => 'application/json',
+  'accept' => '*/*',
+  'host' => '192.168.1.144:1161',
+)
+[ info ] [ PARAM ] array (
+  'type' => 2,
+  'amount' => 0.01,
+  'goods_name' => '广告',
+  'notify' => 'http://liujunfeng.imwork.net/ad/client/notify',
+)
+[ info ] [ LANG ] D:\WWW\fastadmin\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.038505s ]
+[ info ] [ BEHAVIOR ] Run \addons\geetest\Geetest @action_begin [ RunTime:0.000000s ]
+[ info ] [ RUN ] app\api\controller\Yeepay->pay[ D:\WWW\fastadmin\application\api\controller\Yeepay.php ]
+[ info ] [ BEHAVIOR ] Run \addons\cms\Cms @response_send [ RunTime:0.001000s ]
+[ info ] [ LOG ] INIT File
+[ error ] [8]未定义数组索引: result[D:\WWW\fastadmin\application\api\controller\Yeepay.php:117]
+---------------------------------------------------------------
+[ 2019-06-18T14:10:35+08:00 ] 192.168.1.144 POST 192.168.1.144:1161/api/yeepay/pay
+[运行时间：0.494063s] [吞吐率：2.02req/s] [内存消耗：2,614.08kb] [文件加载：138]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000000s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run \addons\cms\Cms @app_init [ RunTime:0.002500s ]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002500s ]
+[ info ] [ LANG ] D:\WWW\fastadmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'yeepay',
+    2 => 'pay',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'content-length' => '108',
+  'content-type' => 'application/json',
+  'accept' => '*/*',
+  'host' => '192.168.1.144:1161',
+)
+[ info ] [ PARAM ] array (
+  'type' => 2,
+  'amount' => 0.01,
+  'goods_name' => '广告',
+  'notify' => 'http://liujunfeng.imwork.net/ad/client/notify',
+)
+[ info ] [ LANG ] D:\WWW\fastadmin\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001500s ]
+[ info ] [ BEHAVIOR ] Run \addons\geetest\Geetest @action_begin [ RunTime:0.000000s ]
+[ info ] [ RUN ] app\api\controller\Yeepay->pay[ D:\WWW\fastadmin\application\api\controller\Yeepay.php ]
+[ info ] [ BEHAVIOR ] Run \addons\cms\Cms @response_send [ RunTime:0.000000s ]
+[ info ] [ LOG ] INIT File
+[ error ] [8]未定义数组索引: result[D:\WWW\fastadmin\application\api\controller\Yeepay.php:117]

@@ -57,7 +57,7 @@ class Cost extends Backend
                     ->count();
 
             $list = $this->model
-//                    ->where($status)
+                    ->where($status)
                     ->where($where)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
@@ -84,6 +84,23 @@ class Cost extends Backend
 
         $this->view->assign('type',$type);
         $this->view->assign('row',$info);
+        return $this->view->fetch();
+    }
+    public function cost()
+    {
+        $id = request()->param('ids');
+        $cost = DB::name('check_info')->where(['id'=>$id])->value('cost');
+        if($this->request->isAjax()){
+            $params = request()->param();
+            $result = DB::name('check_info')->where(['id'=>$params['ids']])->update(['cost'=>$params['cost']]);
+            if($result!==false){
+                $this->success('完成');
+            }else{
+                $this->error('失败');
+            }
+        }
+        $this->view->assign('id',$id);
+        $this->view->assign('cost',$cost);
         return $this->view->fetch();
     }
 }

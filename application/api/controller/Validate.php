@@ -4,12 +4,14 @@ namespace app\api\controller;
 
 use app\common\controller\Api;
 use app\common\model\User;
+use app\admin\model\Admin;
 
 /**
  * 验证接口
  */
 class Validate extends Api
 {
+
     protected $noNeedLogin = '*';
     protected $layout = '';
     protected $error = null;
@@ -30,7 +32,8 @@ class Validate extends Api
         $email = $this->request->request('email');
         $id = (int)$this->request->request('id');
         $count = User::where('email', '=', $email)->where('id', '<>', $id)->count();
-        if ($count > 0) {
+        if ($count > 0)
+        {
             $this->error(__('邮箱已经被占用'));
         }
         $this->success();
@@ -47,7 +50,8 @@ class Validate extends Api
         $email = $this->request->request('username');
         $id = (int)$this->request->request('id');
         $count = User::where('username', '=', $email)->where('id', '<>', $id)->count();
-        if ($count > 0) {
+        if ($count > 0)
+        {
             $this->error(__('用户名已经被占用'));
         }
         $this->success();
@@ -64,7 +68,8 @@ class Validate extends Api
         $mobile = $this->request->request('mobile');
         $id = (int)$this->request->request('id');
         $count = User::where('mobile', '=', $mobile)->where('id', '<>', $id)->count();
-        if ($count > 0) {
+        if ($count > 0)
+        {
             $this->error(__('该手机号已经占用'));
         }
         $this->success();
@@ -78,8 +83,9 @@ class Validate extends Api
     public function check_mobile_exist()
     {
         $mobile = $this->request->request('mobile');
-        $count = User::where('mobile', '=', $mobile)->count();
-        if (!$count) {
+        $count = Admin::where('username', '=', $mobile)->count();
+        if (!$count)
+        {
             $this->error(__('手机号不存在'));
         }
         $this->success();
@@ -94,7 +100,8 @@ class Validate extends Api
     {
         $email = $this->request->request('email');
         $count = User::where('email', '=', $email)->count();
-        if (!$count) {
+        if (!$count)
+        {
             $this->error(__('邮箱不存在'));
         }
         $this->success();
@@ -112,7 +119,8 @@ class Validate extends Api
         $mobile = $this->request->request('mobile');
         $captcha = $this->request->request('captcha');
         $event = $this->request->request('event');
-        if (!\app\common\library\Sms::check($mobile, $captcha, $event)) {
+        if (!\app\common\library\Sms::check($mobile, $captcha, $event))
+        {
             $this->error(__('验证码不正确'));
         }
         $this->success();
@@ -130,7 +138,8 @@ class Validate extends Api
         $email = $this->request->request('email');
         $captcha = $this->request->request('captcha');
         $event = $this->request->request('event');
-        if (!\app\common\library\Ems::check($email, $captcha, $event)) {
+        if (!\app\common\library\Ems::check($email, $captcha, $event))
+        {
             $this->error(__('验证码不正确'));
         }
         $this->success();

@@ -52,21 +52,22 @@
         <label class="control-label col-xs-12 col-sm-2">{:__('IDCARD_FRONT')}:</label>
         <div class="col-xs-12 col-sm-8">
             <!--<input id="c-IDCARD_FRONT" class="form-control" name="row[IDCARD_FRONT]" type="text" value="{$row.IDCARD_FRONT|htmlentities}">-->
-            <img src="http://192.168.1.133:8080{$row.IDCARD_FRONT}" alt="{:__('IDCARD_FRONT')}" />
+            <!--<img src="http://192.168.1.133:8080{$row.IDCARD_FRONT}" alt="{:__('IDCARD_FRONT')}" />-->
+            <img src="http://{$_SERVER['HTTP_HOST'] . $row.IDCARD_FRONT}" alt="{:__('IDCARD_FRONT')}" />
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('IDCARD_BACK')}:</label>
         <div class="col-xs-12 col-sm-8">
             <!--<input id="c-IDCARD_BACK" class="form-control" name="row[IDCARD_BACK]" type="text" value="{$row.IDCARD_BACK|htmlentities}">-->
-            <img src="http://192.168.1.133:8080{$row.IDCARD_BACK}" alt="{:__('IDCARD_BACK')}" />
+            <img src="http://{$_SERVER['HTTP_HOST'] . $row.IDCARD_BACK}" alt="{:__('IDCARD_BACK')}" />
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('HAND_IDCARD')}:</label>
         <div class="col-xs-12 col-sm-8">
             <!--<input id="c-HAND_IDCARD" class="form-control" name="row[HAND_IDCARD]" type="text" value="{$row.HAND_IDCARD|htmlentities}">-->
-            <img src="http://192.168.1.133:8080{$row.HAND_IDCARD}" alt="{:__('HAND_IDCARD')}" />
+            <img src="http://{$_SERVER['HTTP_HOST'] . $row.HAND_IDCARD}" alt="{:__('HAND_IDCARD')}" />
         </div>
     </div>
     <div class="form-group">
@@ -103,14 +104,14 @@
         <label class="control-label col-xs-12 col-sm-2">{:__('SETTLE_BANKCARD')}:</label>
         <div class="col-xs-12 col-sm-8">
             <!--<input id="c-SETTLE_BANKCARD" class="form-control" name="row[SETTLE_BANKCARD]" type="text" value="{$row.SETTLE_BANKCARD|htmlentities}">-->
-            <img src="http://192.168.1.133:8080{$row.SETTLE_BANKCARD}" alt="{:__('SETTLE_BANKCARD')}" />
+            <img src="http://{$_SERVER['HTTP_HOST'] . $row.SETTLE_BANKCARD}" alt="{:__('SETTLE_BANKCARD')}" />
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('HAND_BANKCARD')}:</label>
         <div class="col-xs-12 col-sm-8">
             <!--<input id="c-HAND_BANKCARD" class="form-control" name="row[HAND_BANKCARD]" type="text" value="{$row.HAND_BANKCARD|htmlentities}">-->
-            <img src="http://192.168.1.133:8080{$row.HAND_BANKCARD}" alt="{:__('HAND_BANKCARD')}" />
+            <img src="http://{$_SERVER['HTTP_HOST'] . $row.HAND_BANKCARD}" alt="{:__('HAND_BANKCARD')}" />
         </div>
 
     </div>
@@ -203,6 +204,194 @@
     </div>
 
     {/if}
+
+    {if condition="$type == 3"}
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('merFullName')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merFullName" data-rule="required" class="form-control" name="row[merFullName]" type="text" value="{$row.merFullName|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('merShortName')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merShortName" data-rule="required" class="form-control" name="row[merShortName]" type="text" value="{$row.merShortName|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('merCertType')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merCertType" data-rule="required" class="form-control" name="row[merCertType]" type="text" value="{$row.merCertType|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+    <label class="control-label col-xs-12 col-sm-2">{:__('merCertNo')}:</label>
+    <div class="col-xs-12 col-sm-8">
+        <input id="c-merCertNo" data-rule="required" class="form-control" name="row[merCertNo]" type="text" value="{$row.merCertNo|htmlentities}"  disabled="disabled">
+    </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('legalName')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-legalName" data-rule="required" class="form-control" name="row[legalName]" type="text" value="{$row.legalName|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('legalIdCard')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-legalIdCard" data-rule="required" class="form-control" name="row[legalIdCard]" type="text" value="{$row.legalIdCard|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('merContactName')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merContactName" data-rule="required" class="form-control" name="row[merContactName]" type="text" value="{$row.merContactName|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('merLegalPhone')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merLegalPhone" data-rule="required" class="form-control" name="row[merLegalPhone]" type="text" value="{$row.merLegalPhone|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('merLegalEmail')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merLegalEmail" data-rule="required" class="form-control" name="row[merLegalEmail]" type="text" value="{$row.merLegalEmail|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('merLevel1No')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merLevel1No" data-rule="required" class="form-control" name="row[merLevel1No]" type="text" value="{$row.merLevel1No|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('merLevel2No')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merLevel2No" data-rule="required" class="form-control" name="row[merLevel2No]" type="text" value="{$row.merLevel2No|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('merProvince')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merProvince" data-rule="required" class="form-control" name="row[merProvince]" type="text" value="{$row.merProvince|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('merCity')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merCity" data-rule="required" class="form-control" name="row[merCity]" type="text" value="{$row.merCity|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('merDistrict')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merDistrict" data-rule="required" class="form-control" name="row[merDistrict]" type="text" value="{$row.merDistrict|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('merAddress')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merAddress" data-rule="required" class="form-control" name="row[merAddress]" type="text" value="{$row.merAddress|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('accountLicense')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-accountLicense" data-rule="required" class="form-control" name="row[accountLicense]" type="text" value="{$row.accountLicense|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('cardNo')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cardNo" data-rule="required" class="form-control" name="row[cardNo]" type="text" value="{$row.cardNo|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('headBankCode')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-headBankCode" data-rule="required" class="form-control" name="row[headBankCode]" type="text" value="{$row.headBankCode|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('bankProvince')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-bankProvince" data-rule="required" class="form-control" name="row[bankProvince]" type="text" value="{$row.bankProvince|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('bankCity')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-bankCity" data-rule="required" class="form-control" name="row[bankCity]" type="text" value="{$row.bankCity|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('bankCode')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-bankCode" data-rule="required" class="form-control" name="row[bankCode]" type="text" value="{$row.bankCode|htmlentities}"  disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('IDCARD_FRONT')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <img src="http://{$_SERVER['HTTP_HOST'] . $row.IDCARD_FRONT}" alt="{:__('IDCARD_FRONT')}" />
+            <!--<input id="c-IDCARD_FRONT" data-rule="required" class="form-control" name="row[IDCARD_FRONT]" type="text" value="{$row.IDCARD_FRONT|htmlentities}"  disabled="disabled">-->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('IDCARD_BACK')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <img src="http://{$_SERVER['HTTP_HOST'] . $row.IDCARD_BACK}" alt="{:__('IDCARD_BACK')}" />
+            <!--<input id="c-IDCARD_BACK" data-rule="required" class="form-control" name="row[IDCARD_BACK]" type="text" value="{$row.IDCARD_BACK|htmlentities}"  disabled="disabled">-->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('CORP_CODE')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <img src="http://{$_SERVER['HTTP_HOST'] . $row.CORP_CODE}" alt="{:__('CORP_CODE')}" />
+            <!--<input id="c-CORP_CODE" data-rule="required" class="form-control" name="row[CORP_CODE]" type="text" value="{$row.CORP_CODE|htmlentities}"  disabled="disabled">-->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('UNI_CREDIT_CODE')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <img src="http://{$_SERVER['HTTP_HOST'] . $row.UNI_CREDIT_CODE}" alt="{:__('UNI_CREDIT_CODE')}" />
+            <!--<input id="c-UNI_CREDIT_CODE" data-rule="required" class="form-control" name="row[UNI_CREDIT_CODE]" type="text" value="{$row.UNI_CREDIT_CODE|htmlentities}"  disabled="disabled">-->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('OP_BANK_CODE')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <img src="http://{$_SERVER['HTTP_HOST'] . $row.OP_BANK_CODE}" alt="{:__('OP_BANK_CODE')}" />
+            <!--<input id="c-OP_BANK_CODE" data-rule="required" class="form-control" name="row[OP_BANK_CODE]" type="text" value="{$row.OP_BANK_CODE|htmlentities}"  disabled="disabled">-->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('BUSINESS_PLACE')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <img src="http://{$_SERVER['HTTP_HOST'] . $row.BUSINESS_PLACE}" alt="{:__('BUSINESS_PLACE')}" />
+            <!--<input id="c-BUSINESS_PLACE" data-rule="required" class="form-control" name="row[BUSINESS_PLACE]" type="text" value="{$row.BUSINESS_PLACE|htmlentities}"  disabled="disabled">-->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('CASHIER_SCENE')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <!--<input id="c-CASHIER_SCENE" data-rule="required" class="form-control" name="row[CASHIER_SCENE]" type="text" value="{$row.CASHIER_SCENE|htmlentities}"  disabled="disabled">-->
+            <img src="http://{$_SERVER['HTTP_HOST'] . $row.CASHIER_SCENE}" alt="{:__('CASHIER_SCENE')}" />
+        </div>
+    </div>
+
+
+
+
+    {/if}
+
+
+
+
+
+
 
 
 

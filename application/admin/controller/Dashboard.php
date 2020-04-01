@@ -20,7 +20,7 @@ class Dashboard extends Backend
      */
     public function index()
     {
-        $seventtime = \fast\Date::unixtime('day', -7);//七天前的时间戳
+        $seventtime = \fast\Date::unixtime('day', -6);//七天前的时间戳
         $admin = Admin::get($this->auth->id);
         $group_id = DB::name('auth_group_access')->where("uid",$admin['id'])->value('group_id');
         $wk_id = $admin['wk_id'];

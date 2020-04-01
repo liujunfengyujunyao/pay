@@ -1,0 +1,193 @@
+<!doctype html>
+<html >
+<head>
+    {include file="common/meta" /}
+    <link rel="stylesheet" type="text/css" href="__CDN__/assets/css/pay.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background: #345492;">
+    <div class="container header_top">
+        <div class="row">
+            <h2 >欢迎登陆哇卡支付系统</h2>
+            <a href="{:url('index/logout')}">
+                <input type="button" value="退出登录" class="pull-right btn btn-primary btn-lg" style="margin-top: 22px; background: #169bd5;">
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="info_title visible-xs-block">
+    <h2>1.填写商户信息</h2>
+</div>
+<div class="container">
+    <div class="bus-section">
+        <ul class="nav_menu hidden-xs">
+            <li class="mod-sub-list1  list-active ">1.填写商户信息</li>
+            <li class="mod-sub-list2">2.补充银行卡信息</li>
+            <li class="mod-sub-list3">3.系统审批</li>
+            <li class="mod-sub-list4">4.开通支付完成</li>
+        </ul>
+
+        <div class="form_container">
+            <form id="form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="">
+                <input type="hidden" name="type"  value="1" />
+                <!--商户信息-- begin start-->
+                <div class="busInfo">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4 col-sm-3">真实姓名:</label>
+                        <div class="col-xs-8 col-sm-6">
+                            <input type="text" name="legalName" class="form-control"  id="username" value="{$info.legalName}" data-rule="required;chinese" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-4 col-sm-3">身份证号:</label>
+                        <div class="col-xs-8 col-sm-6">
+                            <input type="text" name="legalIdCard" class="form-control"  id="IDcard" value="{$info.legalIdCard}" data-rule="required;IDcard" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-4 col-sm-3">手机号:</label>
+                        <div class="col-xs-8 col-sm-6">
+                            <input type="text" name="merLegalPhone" class="form-control"  id="IDcard" value="{$info.merLegalPhone}" data-rule="required;mobile" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-4 col-sm-3">邮箱:</label>
+                        <div class="col-xs-8 col-sm-6">
+                            <input type="text" name="merLegalEmail" class="form-control"  id="email" value="{$info.merLegalEmail}" data-rule="required;email" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-4 col-sm-3">商户地址:</label>
+                        <div class="col-xs-8 col-sm-6">
+                            <select name="merProvince" class="form-control busAddress ml0">
+                                <option value=""> 请选择 </option>
+                                {volist name="province" id="vo"}
+                                    <option data-id={$vo.id} value={$vo.code} {if $info.merProvince == $vo.code} selected{/if}>{$vo.name}</option>
+                                {/volist}
+                            </select>
+                            <select name="merCity" id="city" class="form-control busAddress">
+                                <option value=""> 请选择 </option>
+                            </select>
+                            <select name="merDistrict" id="code" class="form-control busAddress" >
+                                <option value=""> 请选择 </option>
+                            </select>
+                            <input type="text" name="merAddress" class="form-control"  id="address" value="{$info.merAddress}"  style="margin-top: 10px; overflow: hidden;" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-4 col-sm-3">上传照片:</label>
+                        <div class="col-xs-8 col-sm-8">
+                            <div class="input-group">
+                                <input id="c-avatar" readonly data-rule="" class="form-control" size="50" name="IDCARD_FRONT" type="text" value="{$info.IDCARD_FRONT}"
+                                       placeholder="请上传身份证正面照片">
+                                <div class="input-group-addon no-border no-padding">
+                                    <span><button type="button" id="plupload-avatar" class="btn btn-danger plupload" data-input-id="c-avatar" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-avatar"><i class="fa fa-upload"></i> 上传</button></span>
+                                </div>
+                                <span class="msg-box n-right" for="c-avatar"></span>
+                            </div>
+                            <ul class="row list-inline plupload-preview" id="p-avatar"></ul>
+                            <div class="input-group" style="margin-top: 30px;">
+                                <input id="c-avatar2" data-rule="" readonly class="form-control" size="50" name="IDCARD_BACK" type="text" value="{$info.IDCARD_BACK}"
+                                       placeholder="请上传身份证反面照片">
+                                <div class="input-group-addon no-border no-padding">
+                                    <span><button type="button" id="plupload-avatar2" class="btn btn-danger plupload" data-input-id="c-avatar2" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-avatar2"><i class="fa fa-upload"></i> 上传</button></span>
+
+                                </div>
+                                <span class="msg-box n-right" for="c-avatar"></span>
+                            </div>
+                            <ul class="row list-inline plupload-preview" id="p-avatar2"></ul>
+                            <div class="input-group" style="margin-top: 30px;">
+                                <input id="c-avatar3" data-rule="" readonly class="form-control" size="50" name="HAND_IDCARD" type="text" value="{$info.HAND_IDCARD}"
+                                       placeholder="请上传手持身份证正面">
+                                <div class="input-group-addon no-border no-padding">
+                                    <span><button type="button" id="plupload-avatar3" class="btn btn-danger plupload" data-input-id="c-avatar3" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-avatar3"><i class="fa fa-upload"></i> 上传</button></span>
+
+                                </div>
+                                <span class="msg-box n-right" for="c-avatar"></span>
+                            </div>
+                            <ul class="row list-inline plupload-preview" id="p-avatar3"></ul>
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: center;">
+                        <input type="button" id="next" value="下一步" class="btn btn-success btn-sm">
+                    </div>
+                </div>
+                <!--商户信息-- begin end-->
+                <!--银行卡信息 --begin start-->
+                <div class="bankCard hidden_tab">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4 col-sm-3">开户总行:</label>
+                        <div class="col-xs-8 col-sm-6">
+                            <select name="headBankCode" class="form-control" >
+                                <option value=""> 请选择 </option>
+                                {volist name="bank" id="vo"}
+                                    <option data-id={$vo.id} value={$vo.code} {if $info.headBankCode == $vo.code} selected{/if}>{$vo.name}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-4 col-sm-3">开户地址:</label>
+                        <div class="col-xs-8 col-sm-6">
+                            <select name="bankProvince" class="form-control busAddress bankAddress ml0" >
+                                <option value=""> 请选择 </option>
+                                {volist name="province" id="vo"}
+                                    <option data-id={$vo.id} value={$vo.code} {if $info.bankProvince == $vo.code} selected{/if}>{$vo.name}</option>
+                                {/volist}
+                            </select>
+                            <select name="bankCity" class="form-control busAddress">
+                                <option value=""> 请选择 </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-4 col-sm-3">开户支行:</label>
+                        <div class="col-xs-8 col-sm-6">
+                            <select name="bankCode" class="form-control bankCode">
+                                <option value=""> 请选择 </option>
+                            </select>
+                            <button type="button" id="checkBankCode" class="btn btn-danger" style="float: left; margin-left: 10px;">查询</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-4 col-sm-3">卡号:</label>
+                        <div class="col-xs-8 col-sm-6">
+                            <input type="text" name="cardNo" class="form-control" value="{$info.cardNo}" data-rule="required;integer" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-4 col-sm-3">银行卡照片:</label>
+                        <div class="col-xs-8 col-sm-8">
+                            <div class="input-group">
+                                <input id="c-avatar4" readonly data-rule="" class="form-control" size="50" name="SETTLE_BANKCARD" type="text" value="{$info.SETTLE_BANKCARD}"
+                                       placeholder="请上传银行卡正面照片">
+                                <div class="input-group-addon no-border no-padding">
+                                    <span><button type="button" id="plupload-avatar4" class="btn btn-danger plupload" data-input-id="c-avatar4" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-avatar4"><i class="fa fa-upload"></i> 上传</button></span>
+                                </div>
+                                <span class="msg-box n-right" for="c-avatar"></span>
+                            </div>
+                            <ul class="row list-inline plupload-preview" id="p-avatar4"></ul>
+                            <div class="input-group" style="margin-top: 30px;">
+                                <input id="c-avatar5" data-rule="" class="form-control" size="50" name="HAND_BANKCARD" type="text" value="{$info.HAND_BANKCARD}"
+                                       placeholder="请上传手持银行卡正面照片" readonly>
+                                <div class="input-group-addon no-border no-padding">
+                                    <span><button type="button" id="plupload-avatar5" class="btn btn-danger plupload" data-input-id="c-avatar5" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-avatar5"><i class="fa fa-upload"></i> 上传</button></span>
+                                </div>
+                                <span class="msg-box n-right" for="c-avatar"></span>
+                            </div>
+                            <ul class="row list-inline plupload-preview" id="p-avatar5"></ul>
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: center;">
+                        <input type="button" id="prev" value="上一步" class="btn btn-success btn-sm">
+                        <input type="submit" id="subBankInfo" value="提交" class="btn btn-success btn-sm" style="margin-left: 30px;">
+                    </div>
+                 </div>
+                <!--银行卡信息 --begin end-->
+            </form>
+        </div>
+    </div>
+</div>
+{include file="common/script" /}
+</body>
+</html>

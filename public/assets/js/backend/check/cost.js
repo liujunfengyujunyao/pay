@@ -30,7 +30,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'mobile', title: __('Mobile')},
                         {field: 'email', title: __('Email')},
                         {field: 'type', title: __('申请类型'), searchList: {"3":__('Type 3'),"2":__('Type 2'),"1":__('Type 1')}, formatter: Table.api.formatter.normal},
-                        {field: 'update_time', title: __('Update_time'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
+                        {field: 'update_time', title: __('Update_time'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api .formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate,
                             buttons: [
                                 {
@@ -66,6 +66,34 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         },
         edit: function () {
             Controller.api.bindevent();
+        },
+        cost: function() {
+            $(document).ready(function() {
+                $(".false").click(function() {
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                });
+                $(".confirm").click(function() {
+                    obj = new Object();
+                    obj.id = $("#hi").val();
+                    obj.cost = $(".num").text();
+                    $.ajax({
+                        url: "",
+                        async: false,
+                        data: obj,
+                        type: "POST",
+                        dataType: "json",
+                        success: function(res) {
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                            alert("设置费率成功");
+                        },
+                        error: function() {
+                            alert("设置失败请重新设置");
+                        }
+                    });
+                });
+            });
         },
         api: {
             bindevent: function () {

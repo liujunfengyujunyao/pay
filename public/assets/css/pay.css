@@ -1,0 +1,117 @@
+*{margin: 0;padding: 0;}
+.header_top h2{ font-size: 24px; color: #fff; float: left;line-height: 50px;}
+.btn-primary:hover{border-color:transparent!important;}
+.login-section,.bus-section {
+    margin: 200px auto;
+    overflow: hidden;
+    width: 1000px;
+}
+.bus-section{
+    margin: 100px auto;
+}
+.hidden_tab{
+    display: none;
+}
+.busInfo,.bankCard{
+    overflow: hidden;
+}
+.login-section p{
+    text-align: center;
+    font-size: 20px;
+    color: #666;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.nav_menu{
+    background: url("../img/navBg.png") no-repeat;
+    height: 27px;
+    list-style: none;
+}
+.nav_menu2{
+    background: url("../img/navBg2.png") no-repeat;
+    height: 24px;
+    list-style: none;
+}
+.nav_menu li{
+    list-style: none;
+    float: left;
+    color: #fff;
+    line-height: 27px;
+    font-size: 16px;
+    padding-left: 40px;
+    width: 193px;
+}
+.nav_menu li.mod-sub-list1{
+     width: 195px;
+}
+.nav_menu li.list-active{
+    background: url("../img/navBgHover.png") left -1px no-repeat;
+}
+.nav_menu li.list-active2{
+    background: url("../img/navBgHover2.png") -2px top no-repeat;
+}
+.nav_menu li.mod-sub-list2{
+    /*width: 200px;*/
+}
+.nav_menu li.mod-sub-list3{
+    /*width: 168px;*/
+}
+.nav_menu li.mod-sub-list4{
+    /*width: 190px;*/
+}
+.form_container{
+    overflow: hidden;
+    padding: 30px 100px;
+}
+.info_title{
+    background: #169bd5;
+    height: 76px;
+    margin-top: 100px;
+}
+.info_title h2{
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    line-height: 76px;
+}
+.busAddress{
+    float: left;
+    margin-left: 10px;
+    width: 30%;
+}
+.bankAddress{
+    width: 48%;
+}
+.busType{
+    width: 46%;
+}
+.bankCode{
+    width: 84%;
+    float: left;
+}
+.ml0{
+    margin-left: 0;
+}
+@media (max-width: 767px) {
+    .login-section {
+        margin: 100px auto;
+        width: 100%;
+    }
+    .bankCode{
+        width: 70%;
+    }
+    .header_top h2{
+        font-size: 18px;
+        margin-left: 20px;
+    }
+    .bus-section{
+        margin:30px auto;
+        width: 100%;
+    }
+    .header_top input[type=button]{
+        margin-right: 10px;
+    }
+    .form_container{
+        padding: 0 3%;
+    }
+}

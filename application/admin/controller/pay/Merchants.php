@@ -78,10 +78,6 @@ class Merchants extends Backend
     public function detail()
     {
         $this->model = new \app\admin\model\Order;
-//            halt(11111111111);
-//        dump(request()->param());
-
-
         if ($this->request->isAjax()){
 
             $addtabs= request()->param('addtabs');
@@ -91,6 +87,7 @@ class Merchants extends Backend
             $admin = DB::name('admin')->where(['id'=>$admin_id])->find();
 
             $wk = DB::name('wk_user')->where(['id'=>$admin['wk_id']])->find();
+
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
             $list = $this->model
                 ->where(['user_id'=>$wk['id']])

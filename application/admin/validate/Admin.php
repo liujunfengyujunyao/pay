@@ -12,9 +12,9 @@ class Admin extends Validate
      */
     protected $rule = [
         'username' => 'require|max:50|unique:admin',
-        'nickname' => 'require',
+        //'nickname' => 'require',
         'password' => 'require',
-        'email'    => 'require|email|unique:admin,email',
+        //'email'    => 'require|email|unique:admin,email',
     ];
 
     /**
@@ -33,14 +33,16 @@ class Admin extends Validate
      * 验证场景
      */
     protected $scene = [
-        'add'  => ['username', 'email', 'nickname', 'password'],
+        //'add'  => ['username', 'email', 'nickname', 'password'],
+        'add'  => ['username','password'],
         'edit' => ['username', 'email', 'nickname'],
     ];
 
     public function __construct(array $rules = [], $message = [], $field = [])
     {
         $this->field = [
-            'username' => __('Username'),
+            //'username' => __('Username'),
+            'username' => '手机号',
             'nickname' => __('Nickname'),
             'password' => __('Password'),
             'email'    => __('Email'),

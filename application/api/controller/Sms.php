@@ -6,13 +6,22 @@ use app\common\controller\Api;
 use app\common\library\Sms as Smslib;
 use app\common\model\User;
 
+header('Access-Control-Allow-Origin:*');
+header('Access-Control-Allow-Headers: Content-Type,Content-Length,Accept-Encoding,X-Requested-with, Origin');
+
 /**
  * 手机短信接口
  */
 class Sms extends Api
 {
+
     protected $noNeedLogin = '*';
     protected $noNeedRight = '*';
+
+    public function _initialize()
+    {
+        parent::_initialize();
+    }
 
     /**
      * 发送验证码
@@ -38,10 +47,10 @@ class Sms extends Api
             $this->error(__('发送频繁'));
         }
         if ($event) {
-            $userinfo = User::getByMobile($mobile);
+            $userinfo = \app\admin\model\Admin::getByUsername($mobile);
             if ($event == 'register' && $userinfo) {
                 //已被注册
-                $this->error(__('已被注册'));
+//                $this->error(__('已被注册'));
             } elseif (in_array($event, ['changemobile']) && $userinfo) {
                 //被占用
                 $this->error(__('已被占用'));
@@ -50,8 +59,10 @@ class Sms extends Api
                 $this->error(__('未注册'));
             }
         }
+//        halt($event);
         $ret = Smslib::send($mobile, null, $event);
         if ($ret) {
+//            halt($ret);
             $this->success(__('发送成功'));
         } else {
             $this->error(__('发送失败'));
@@ -76,7 +87,7 @@ class Sms extends Api
             $this->error(__('手机号不正确'));
         }
         if ($event) {
-            $userinfo = User::getByMobile($mobile);
+            $userinfo = \app\admin\model\Admin::getByUsername($mobile);
             if ($event == 'register' && $userinfo) {
                 //已被注册
                 $this->error(__('已被注册'));
