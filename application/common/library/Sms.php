@@ -57,10 +57,7 @@ class Sms
         //$result = Hook::listen('sms_send', $sms, null, true);
         $s = new SendSms();
         //设置关键的四个配置参数，其实配置参数应该写在公共或者模块下的config配置文件中，然后在获取使用，这里我就直接使用了。
-//        $s->accessKeyId = 'LTAIetnFDud6qAhM';
-        $s->accessKeyId = 'LTAIUIn0N1R3wFqG';
-//        $s->accessKeySecret = 'uIHPvwzBzDh4cht27LANlku7oP8ekt';
-        $s->accessKeySecret = 'VCI4XBNN7Oaugl8Is4mdSLyxwQ3Zyg';
+
 //        $s->signName = '旭日东升';
         $s->signName = '哇咔哇咔';
         $s->templateCode = 'SMS_166867972';
